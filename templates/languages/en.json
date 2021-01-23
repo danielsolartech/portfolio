@@ -1,0 +1,22 @@
+{
+    "pages": {
+        "about": {
+            "title": "Home ~ Daniel Solarte Chaverra",
+            "description": "Cross-platform software developer, if you want to hire a software developer look my profile clicking here."
+        }
+    },
+    "header": {
+        "nav_home": "Home",
+        "nav_projects": "Projects",
+        "nav_contact": "Contact",
+        "nav_blog": "Blog"
+    },
+    "about": {
+        "profession": "Software Developer",
+        "messages": [
+            "Cross-platform software developer with experience in backend and frontend process with JavaScript, TypeScript, Rust, NodeJS, ReactJS, Ionic and SASS.",
+            "Besides, i've made works as freelancer with mobile apps or web apps, and bots for Discord communities.",
+            "\"The life is an adventure without end.\""
+        ]
+    }
+}

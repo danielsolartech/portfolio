@@ -1,0 +1,13 @@
+[package]
+name = "danielsolartech-portfolio"
+version = "0.1.0"
+authors = ["Daniel Solarte <danielsolartech@hotmail.com>"]
+edition = "2018"
+
+[dependencies]
+actix-files = "0.5"
+actix-web = "3"
+dotenv = "0.15"
+grass = "0.10.4"
+serde = "1"
+serde_json = "1"

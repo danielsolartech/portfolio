@@ -1,0 +1,22 @@
+$footerSize: 33px;
+
+footer {
+    width: 100%;
+    height: $footerSize;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: center;
+    background-color: #EEEEEE;
+    padding: .5rem 2rem;
+    font-size: .85rem;
+
+    & > svg {
+        width: 1em;
+        height: 1em;
+        margin: 0 .25rem;
+    }
+    & > b {
+        margin-left: .25rem;
+    }
+}
