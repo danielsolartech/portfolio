@@ -18,5 +18,6 @@
             "Besides, i've made works as freelancer with mobile apps or web apps, and bots for Discord communities.",
             "\"The life is an adventure without end.\""
         ]
-    }
+    },
+    "footer": "Built with <heart> using <b>Rust</b>"
 }

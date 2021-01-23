@@ -14,6 +14,7 @@ async fn styles(path: web::Path<String>) -> impl Responder {
 #[get("/")]
 async fn about(page_url: web::Data<String>, req: HttpRequest) -> impl Responder {
     let page_lang: String = utils::get_language(&req);
+    let page_url: String = page_url.into_inner().to_string();
 
     let lang_texts: languages::Language = languages::get_langague_or(&page_lang, "en").expect("Cannot parse language.");
     let page_texts: &languages::PageTexts = lang_texts.pages.get("about").expect("Cannot get page texts.");
@@ -30,16 +31,17 @@ async fn about(page_url: web::Data<String>, req: HttpRequest) -> impl Responder 
             page_id: "about",
 
             page_lang,
-            page_url: page_url.into_inner().to_string(),
+            page_url: page_url.clone(),
 
             page_title: page_texts.title.clone(),
             page_description: page_texts.description.clone(),
+            page_image: format!("{}assets/images/avatar.png", page_url),
 
             header_texts: lang_texts.header,
 
             page_keywords: "Daniel Solarte Chaverra, Developer, ReactJS, TypeScript, JavaScript, js, programmer, software, NodeJS, Deno, Rust, Ionic, Figma, danielsolartech, 100DaysOfCode, portfolio, it, technology, service workers, pwa, ts, react",
-            page_image: "https://danielsolartech.github.io/avatar.png",
         },
+        lang_texts.footer,
         about_data,
     )
 }

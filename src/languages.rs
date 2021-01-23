@@ -27,6 +27,7 @@ pub struct Language {
     pub pages: HashMap<String, PageTexts>,
     pub header: HeaderTexts,
     pub about: AboutTexts,
+    pub footer: String,
 }
 
 pub fn get_language(lang: &String) -> Result<Language, String> {

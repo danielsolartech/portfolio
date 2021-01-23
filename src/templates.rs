@@ -52,16 +52,17 @@ pub struct HeaderData<'a> {
 
     pub page_title: String,
     pub page_description: String,
+    pub page_image: String,
 
     pub header_texts: HeaderTexts,
 
     pub page_keywords: &'a str,
-    pub page_image: &'a str,
 }
 
 pub fn render_html(
     name: &str,
     header: HeaderData,
+    footer: String,
     data: TemplateData,
 ) -> HttpResponse {
     let mut template_data: TemplateData = data;
@@ -74,6 +75,7 @@ pub fn render_html(
 
     header_data.push(("page_title", &header.page_title));
     header_data.push(("page_description", &header.page_description));
+    header_data.push(("page_image", &header.page_image));
 
     header_data.push(("nav_home", &header.header_texts.nav_home));
     header_data.push(("nav_projects", &header.header_texts.nav_projects));
@@ -81,12 +83,16 @@ pub fn render_html(
     header_data.push(("nav_blog", &header.header_texts.nav_blog));
 
     header_data.push(("page_keywords", header.page_keywords));
-    header_data.push(("page_image", header.page_image));
 
     let template_header: String = render_template_with_data("header/header", header_data);
     template_data.push(("header", template_header.as_str()));
 
-    let template_footer: String = render_template_with_data("header/footer", TemplateData::new());
+    let mut footer_data: TemplateData = TemplateData::new();
+
+    let footer = footer.replace("<heart>", include_str!("heart.svg"));
+    footer_data.push(("footer_text", &footer));
+
+    let template_footer: String = render_template_with_data("header/footer", footer_data);
     template_data.push(("footer", template_footer.as_str()));
 
     let mut template_response: HttpResponseBuilder = HttpResponse::Ok();
