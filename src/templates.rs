@@ -97,14 +97,6 @@ pub fn render_html(
         },
     ));
     header_data.push((
-        "nav_contact_active",
-        if header.page_id == "contact" {
-            "active"
-        } else {
-            ""
-        },
-    ));
-    header_data.push((
         "nav_blog_active",
         if header.page_id == "blog" {
             "active"
@@ -115,7 +107,6 @@ pub fn render_html(
 
     header_data.push(("nav_home", &header.header_texts.nav_home));
     header_data.push(("nav_projects", &header.header_texts.nav_projects));
-    header_data.push(("nav_contact", &header.header_texts.nav_contact));
     header_data.push(("nav_blog", &header.header_texts.nav_blog));
 
     header_data.push(("page_keywords", header.page_keywords));

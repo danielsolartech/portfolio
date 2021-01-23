@@ -13,7 +13,6 @@ pub struct HeaderTexts {
     pub nav_home: String,
     pub nav_projects: String,
     pub nav_blog: String,
-    pub nav_contact: String,
 }
 
 #[derive(Debug, Deserialize)]
