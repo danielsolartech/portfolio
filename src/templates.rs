@@ -80,6 +80,11 @@ pub fn render_html(
     header_data.push(("page_description", &header.page_description));
     header_data.push(("page_image", &header.page_image));
 
+    header_data.push(("nav_home_active", if header.page_id == "about" { "active" } else { "" }));
+    header_data.push(("nav_projects_active", if header.page_id == "projects" { "active" } else { "" }));
+    header_data.push(("nav_contact_active", if header.page_id == "contact" { "active" } else { "" }));
+    header_data.push(("nav_blog_active", if header.page_id == "blog" { "active" } else { "" }));
+
     header_data.push(("nav_home", &header.header_texts.nav_home));
     header_data.push(("nav_projects", &header.header_texts.nav_projects));
     header_data.push(("nav_contact", &header.header_texts.nav_contact));
