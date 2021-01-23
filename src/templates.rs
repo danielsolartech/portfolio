@@ -1,28 +1,31 @@
-use actix_web::{HttpResponse, dev::HttpResponseBuilder, http::StatusCode};
 use crate::{
     languages::HeaderTexts,
-    utils::get_current_directory
+    utils::{get_current_directory, get_scss_content},
 };
+use actix_web::{dev::HttpResponseBuilder, http::StatusCode, HttpResponse};
 use std::fs;
 
 pub fn render_scss(name: &str) -> HttpResponse {
     let scss_rute: String = format!("{}templates/scss/{}.scss", get_current_directory(), name);
 
-    match grass::from_path(
-        &scss_rute,
-        &grass::Options::default()
-            .style(grass::OutputStyle::Compressed)
-    ) {
-        Ok(css_content) => HttpResponseBuilder::new(StatusCode::OK).content_type("text/css").body(css_content),
+    match get_scss_content(&scss_rute) {
+        Ok(css_content) => HttpResponseBuilder::new(StatusCode::OK)
+            .content_type("text/css")
+            .body(css_content),
         Err(e) => {
             println!("Template SCSS ({}): {} ", name, e);
-            HttpResponseBuilder::new(StatusCode::BAD_REQUEST).body(format!("Cannot parse SCSS file: {}", scss_rute))
-        },
+            HttpResponseBuilder::new(StatusCode::BAD_REQUEST)
+                .body(format!("Cannot parse SCSS file: {}", scss_rute))
+        }
     }
 }
 
 fn render_template(template_name: &str) -> String {
-    let template_rute: String = format!("{}templates/html/{}.html", get_current_directory(), template_name);
+    let template_rute: String = format!(
+        "{}templates/html/{}.html",
+        get_current_directory(),
+        template_name
+    );
 
     match fs::read_to_string(&template_rute) {
         Ok(template_content) => template_content,

@@ -2,7 +2,7 @@ mod languages;
 mod templates;
 mod utils;
 
-use actix_web::{App, get, HttpRequest, HttpServer, Responder, web};
+use actix_web::{get, web, App, HttpRequest, HttpServer, Responder};
 use dotenv::dotenv;
 use std::env;
 
@@ -16,8 +16,12 @@ async fn about(page_url: web::Data<String>, req: HttpRequest) -> impl Responder 
     let page_lang: String = utils::get_language(&req);
     let page_url: String = page_url.into_inner().to_string();
 
-    let lang_texts: languages::Language = languages::get_langague_or(&page_lang, "en").expect("Cannot parse language.");
-    let page_texts: &languages::PageTexts = lang_texts.pages.get("about").expect("Cannot get page texts.");
+    let lang_texts: languages::Language =
+        languages::get_langague_or(&page_lang, "en").expect("Cannot parse language.");
+    let page_texts: &languages::PageTexts = lang_texts
+        .pages
+        .get("about")
+        .expect("Cannot get page texts.");
 
     let mut about_data: templates::TemplateData = templates::TemplateData::new();
     about_data.push(("profession", &lang_texts.about.profession));
@@ -55,7 +59,10 @@ async fn main() -> std::io::Result<()> {
     let host: String = env::var("API_HOST").unwrap_or(String::from("127.0.0.1"));
 
     // Get `API_PORT` from the environment variables.
-    let port: u16 = env::var("API_PORT").unwrap_or(String::from("5000")).parse().expect("The `API_PORT` is not a valid port number.");
+    let port: u16 = env::var("API_PORT")
+        .unwrap_or(String::from("5000"))
+        .parse()
+        .expect("The `API_PORT` is not a valid port number.");
 
     // Get `API_URL` from the environment variables.
     let page_url: String = env::var("API_URL").unwrap_or(format!("http://{}:{}/", host, port));

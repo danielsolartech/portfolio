@@ -29,3 +29,10 @@ pub fn get_language(req: &HttpRequest) -> String {
 
     String::from("en")
 }
+
+pub fn get_scss_content(path: &str) -> grass::Result<String> {
+    grass::from_path(
+        path,
+        &grass::Options::default().style(grass::OutputStyle::Compressed),
+    )
+}
