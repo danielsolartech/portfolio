@@ -1,3 +1,4 @@
+use crate::languages::{get_langague_or, Language};
 use actix_web::HttpRequest;
 use std::env;
 
@@ -28,6 +29,14 @@ pub fn get_language(req: &HttpRequest) -> String {
     }
 
     String::from("en")
+}
+
+pub fn get_language_texts(req: &HttpRequest) -> (String, Language) {
+    let page_lang: String = get_language(req);
+    (
+        page_lang.clone(),
+        get_langague_or(&page_lang, "en").expect("Cannot parse language."),
+    )
 }
 
 pub fn get_scss_content(path: &str) -> grass::Result<String> {

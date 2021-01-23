@@ -25,10 +25,17 @@ pub struct AboutTexts {
 }
 
 #[derive(Debug, Deserialize)]
+pub struct Error404Texts {
+    pub error_title: String,
+    pub error_message: String,
+}
+
+#[derive(Debug, Deserialize)]
 pub struct Language {
     pub pages: HashMap<String, PageTexts>,
     pub header: HeaderTexts,
     pub about: AboutTexts,
+    pub error404: Error404Texts,
     pub footer: String,
 }
 

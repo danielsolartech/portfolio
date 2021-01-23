@@ -13,11 +13,9 @@ async fn styles(path: web::Path<String>) -> impl Responder {
 
 #[get("/")]
 async fn about(page_url: web::Data<String>, req: HttpRequest) -> impl Responder {
-    let page_lang: String = utils::get_language(&req);
+    let (page_lang, lang_texts) = utils::get_language_texts(&req);
     let page_url: String = page_url.into_inner().to_string();
 
-    let lang_texts: languages::Language =
-        languages::get_langague_or(&page_lang, "en").expect("Cannot parse language.");
     let page_texts: &languages::PageTexts = lang_texts
         .pages
         .get("about")
@@ -52,6 +50,41 @@ async fn about(page_url: web::Data<String>, req: HttpRequest) -> impl Responder 
     )
 }
 
+#[get("*")]
+async fn error404(page_url: web::Data<String>, req: HttpRequest) -> impl Responder {
+    let (page_lang, lang_texts) = utils::get_language_texts(&req);
+    let page_url: String = page_url.into_inner().to_string();
+
+    let page_texts: &languages::PageTexts = lang_texts
+        .pages
+        .get("error404")
+        .expect("Cannot get page texts.");
+
+    let mut error404_data: templates::TemplateData = templates::TemplateData::new();
+    error404_data.push(("error_title", &lang_texts.error404.error_title));
+    error404_data.push(("error_message", &lang_texts.error404.error_message));
+
+    templates::render_html(
+        "error404",
+        templates::HeaderData {
+            page_id: "error404",
+
+            page_lang,
+            page_url: page_url.clone(),
+
+            page_title: page_texts.title.clone(),
+            page_description: page_texts.description.clone(),
+            page_image: format!("{}assets/images/error404.png", page_url),
+
+            header_texts: lang_texts.header,
+
+            page_keywords: "",
+        },
+        lang_texts.footer,
+        error404_data,
+    )
+}
+
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
     // Read .env file.
@@ -76,6 +109,7 @@ async fn main() -> std::io::Result<()> {
             .service(actix_files::Files::new("/assets/", "public/").show_files_listing())
             .service(styles)
             .service(about)
+            .service(error404)
     })
     .bind((host, port))?
     .run()
