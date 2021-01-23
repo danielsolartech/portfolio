@@ -25,9 +25,11 @@ async fn about(page_url: web::Data<String>, req: HttpRequest) -> impl Responder 
 
     let mut about_data: templates::TemplateData = templates::TemplateData::new();
     about_data.push(("profession", &lang_texts.about.profession));
+    about_data.push(("about_me_title", &lang_texts.about.about_me_title));
     about_data.push(("about_message_1", &lang_texts.about.messages[0]));
     about_data.push(("about_message_2", &lang_texts.about.messages[1]));
     about_data.push(("about_message_3", &lang_texts.about.messages[2]));
+    about_data.push(("skills_title", &lang_texts.about.skills_title));
 
     templates::render_html(
         "about",

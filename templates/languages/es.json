@@ -1,0 +1,25 @@
+{
+    "pages": {
+        "about": {
+            "title": "Inicio ~ Daniel Solarte Chaverra",
+            "description": "Desarrollador de software multiplataforma, si quieres contratar un desarrollador de software mira mi perfil haciendo click aquí."
+        }
+    },
+    "header": {
+        "nav_home": "Inicio",
+        "nav_projects": "Proyectos",
+        "nav_contact": "Contacto",
+        "nav_blog": "Blog"
+    },
+    "about": {
+        "profession": "Desarrollador de Software",
+        "about_me_title": "Sobre mí",
+        "messages": [
+            "Desarrollador de software multiplataforma con experiencia en procesos de backend y frontend con JavaScript, TypeScript, Rust, NodeJS, ReactJS, Ionic y SASS.",
+            "Además, he hecho trabajos como freelancer con aplicaciones móviles o web, y bots para comunidades de Discord.",
+            "\"La vida es una aventura sin fin.\""
+        ],
+        "skills_title": "Mis habilidades"
+    },
+    "footer": "Hecho con <heart> usando <b>Rust</b>"
+}

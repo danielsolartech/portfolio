@@ -19,7 +19,9 @@ pub struct HeaderTexts {
 #[derive(Debug, Deserialize)]
 pub struct AboutTexts {
     pub profession: String,
+    pub about_me_title: String,
     pub messages: Vec<String>,
+    pub skills_title: String,
 }
 
 #[derive(Debug, Deserialize)]
