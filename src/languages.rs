@@ -40,7 +40,7 @@ pub struct Language {
 
 pub fn get_language(lang: &String) -> Result<Language, String> {
     let file_rute: String = format!(
-        "{}templates/languages/{}.json",
+        "{}assets/languages/{}.json",
         get_current_directory(),
         lang
     );

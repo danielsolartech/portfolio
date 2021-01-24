@@ -6,7 +6,7 @@ use actix_web::{dev::HttpResponseBuilder, http::StatusCode, HttpResponse};
 use std::fs;
 
 pub fn render_scss(name: &str) -> HttpResponse {
-    let scss_rute: String = format!("{}templates/scss/{}.scss", get_current_directory(), name);
+    let scss_rute: String = format!("{}assets/scss/{}.scss", get_current_directory(), name);
 
     match get_scss_content(&scss_rute) {
         Ok(css_content) => HttpResponseBuilder::new(StatusCode::OK)
@@ -22,7 +22,7 @@ pub fn render_scss(name: &str) -> HttpResponse {
 
 fn render_template(template_name: &str) -> String {
     let template_rute: String = format!(
-        "{}templates/html/{}.html",
+        "{}assets/templates/{}.html",
         get_current_directory(),
         template_name
     );

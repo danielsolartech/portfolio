@@ -106,7 +106,7 @@ async fn main() -> std::io::Result<()> {
     HttpServer::new(move || {
         App::new()
             .data(page_url.clone())
-            .service(actix_files::Files::new("/assets/", "public/").show_files_listing())
+            .service(actix_files::Files::new("/assets/", "assets/public/").show_files_listing())
             .service(styles)
             .service(about)
             .service(error404)
