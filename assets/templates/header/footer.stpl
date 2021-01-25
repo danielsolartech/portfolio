@@ -1,0 +1,3 @@
+    <footer><%- texts.footer.replace("<heart>", heart_svg) %></footer>
+</body>
+</html>

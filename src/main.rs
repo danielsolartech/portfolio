@@ -2,9 +2,12 @@ mod languages;
 mod templates;
 mod utils;
 
-use actix_web::{get, web, App, HttpRequest, HttpServer, Responder};
+use actix_web::{error::InternalError, get, http::StatusCode, web, App, HttpRequest, HttpResponse, HttpServer, Responder};
 use dotenv::dotenv;
+use sailfish::TemplateOnce;
 use std::env;
+
+const HEART_SVG: &str = include_str!("heart.svg");
 
 #[get("/styles/{name:.*}")]
 async fn styles(path: web::Path<String>) -> impl Responder {
@@ -12,77 +15,65 @@ async fn styles(path: web::Path<String>) -> impl Responder {
 }
 
 #[get("/")]
-async fn about(page_url: web::Data<String>, req: HttpRequest) -> impl Responder {
-    let (page_lang, lang_texts) = utils::get_language_texts(&req);
+async fn home(page_url: web::Data<String>, req: HttpRequest) -> actix_web::Result<HttpResponse> {
+    let (page_lang, texts) = utils::get_language_texts(&req);
     let page_url: String = page_url.into_inner().to_string();
 
-    let page_texts: &languages::PageTexts = lang_texts
+    let page_texts: &languages::PageTexts = texts
         .pages
-        .get("about")
+        .get("home")
         .expect("Cannot get page texts.");
 
-    let mut about_data: templates::TemplateData = templates::TemplateData::new();
-    about_data.push(("profession", &lang_texts.about.profession));
-    about_data.push(("about_me_title", &lang_texts.about.about_me_title));
-    about_data.push(("about_message_1", &lang_texts.about.messages[0]));
-    about_data.push(("about_message_2", &lang_texts.about.messages[1]));
-    about_data.push(("about_message_3", &lang_texts.about.messages[2]));
-    about_data.push(("skills_title", &lang_texts.about.skills_title));
+    let template: templates::Home = templates::Home {
+        page_id: "home",
 
-    templates::render_html(
-        "about",
-        templates::HeaderData {
-            page_id: "about",
+        page_lang,
+        page_texts: page_texts.clone(),
+        texts,
 
-            page_lang,
-            page_url: page_url.clone(),
+        page_url: page_url.clone(),
+        page_keywords: "Daniel Solarte Chaverra, Developer, ReactJS, TypeScript, JavaScript, js, programmer, software, NodeJS, Deno, Rust, Ionic, Figma, danielsolartech, 100DaysOfCode, portfolio, it, technology, service workers, pwa, ts, react",
+        page_image: format!("{}assets/images/avatar.png", page_url),
 
-            page_title: page_texts.title.clone(),
-            page_description: page_texts.description.clone(),
-            page_image: format!("{}assets/images/avatar.png", page_url),
+        heart_svg: HEART_SVG,
+    };
 
-            header_texts: lang_texts.header,
-
-            page_keywords: "Daniel Solarte Chaverra, Developer, ReactJS, TypeScript, JavaScript, js, programmer, software, NodeJS, Deno, Rust, Ionic, Figma, danielsolartech, 100DaysOfCode, portfolio, it, technology, service workers, pwa, ts, react",
-        },
-        lang_texts.footer,
-        about_data,
-    )
+    Ok(HttpResponse::Ok()
+        .content_type("text/html")
+        .body(template
+            .render_once()
+            .map_err(|e| InternalError::new(e, StatusCode::INTERNAL_SERVER_ERROR))?))
 }
 
 #[get("*")]
-async fn error404(page_url: web::Data<String>, req: HttpRequest) -> impl Responder {
-    let (page_lang, lang_texts) = utils::get_language_texts(&req);
+async fn error404(page_url: web::Data<String>, req: HttpRequest) -> actix_web::Result<HttpResponse> {
+    let (page_lang, texts) = utils::get_language_texts(&req);
     let page_url: String = page_url.into_inner().to_string();
 
-    let page_texts: &languages::PageTexts = lang_texts
+    let page_texts: &languages::PageTexts = texts
         .pages
         .get("error404")
         .expect("Cannot get page texts.");
 
-    let mut error404_data: templates::TemplateData = templates::TemplateData::new();
-    error404_data.push(("error_title", &lang_texts.error404.error_title));
-    error404_data.push(("error_message", &lang_texts.error404.error_message));
+    let template: templates::Error404 = templates::Error404 {
+        page_id: "error404",
 
-    templates::render_html(
-        "error404",
-        templates::HeaderData {
-            page_id: "error404",
+        page_lang,
+        page_texts: page_texts.clone(),
+        texts,
 
-            page_lang,
-            page_url: page_url.clone(),
+        page_url,
+        page_keywords: "",
+        page_image: String::new(),
 
-            page_title: page_texts.title.clone(),
-            page_description: page_texts.description.clone(),
-            page_image: format!("{}assets/images/error404.png", page_url),
+        heart_svg: HEART_SVG,
+    };
 
-            header_texts: lang_texts.header,
-
-            page_keywords: "",
-        },
-        lang_texts.footer,
-        error404_data,
-    )
+    Ok(HttpResponse::Ok()
+        .content_type("text/html")
+        .body(template
+            .render_once()
+            .map_err(|e| InternalError::new(e, StatusCode::INTERNAL_SERVER_ERROR))?))
 }
 
 #[actix_web::main]
@@ -108,7 +99,7 @@ async fn main() -> std::io::Result<()> {
             .data(page_url.clone())
             .service(actix_files::Files::new("/assets/", "assets/public/").show_files_listing())
             .service(styles)
-            .service(about)
+            .service(home)
             .service(error404)
     })
     .bind((host, port))?

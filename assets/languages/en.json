@@ -1,7 +1,7 @@
 {
     "pages": {
-        "about": {
-            "title": "Home ~ Daniel Solarte Chaverra",
+        "home": {
+            "title": "Portfolio ~ Daniel Solarte Chaverra",
             "description": "Cross-platform software developer, if you want to hire a software developer look my profile clicking here."
         },
         "error404": {
@@ -14,7 +14,7 @@
         "nav_projects": "Projects",
         "nav_blog": "Blog"
     },
-    "about": {
+    "home": {
         "profession": "Software Developer",
         "about_me_title": "About Me",
         "messages": [

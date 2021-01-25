@@ -1,7 +1,7 @@
 {
     "pages": {
-        "about": {
-            "title": "Inicio ~ Daniel Solarte Chaverra",
+        "home": {
+            "title": "Portafolio ~ Daniel Solarte Chaverra",
             "description": "Desarrollador de software multiplataforma, si quieres contratar un desarrollador de software mira mi perfil haciendo click aquí."
         },
         "error404": {
@@ -14,7 +14,7 @@
         "nav_projects": "Proyectos",
         "nav_blog": "Blog"
     },
-    "about": {
+    "home": {
         "profession": "Desarrollador de Software",
         "about_me_title": "Sobre mí",
         "messages": [

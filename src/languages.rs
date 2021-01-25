@@ -2,38 +2,38 @@ use crate::utils::get_current_directory;
 use serde::Deserialize;
 use std::{collections::HashMap, fs};
 
-#[derive(Debug, Deserialize)]
+#[derive(Clone, Debug, Deserialize)]
 pub struct PageTexts {
     pub title: String,
     pub description: String,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Clone, Debug, Deserialize)]
 pub struct HeaderTexts {
     pub nav_home: String,
     pub nav_projects: String,
     pub nav_blog: String,
 }
 
-#[derive(Debug, Deserialize)]
-pub struct AboutTexts {
+#[derive(Clone, Debug, Deserialize)]
+pub struct HomeTexts {
     pub profession: String,
     pub about_me_title: String,
     pub messages: Vec<String>,
     pub skills_title: String,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Clone, Debug, Deserialize)]
 pub struct Error404Texts {
     pub error_title: String,
     pub error_message: String,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Clone, Debug, Deserialize)]
 pub struct Language {
     pub pages: HashMap<String, PageTexts>,
     pub header: HeaderTexts,
-    pub about: AboutTexts,
+    pub home: HomeTexts,
     pub error404: Error404Texts,
     pub footer: String,
 }

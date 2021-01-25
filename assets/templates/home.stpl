@@ -1,11 +1,11 @@
-{@header}
+<% include!("header/header.stpl"); %>
 <div class="about">
     <div class="about__left">
         <div class="about__left--avatar"></div>
         <div class="about__left--bottom">
             <div class="about__left--bottom__text">
                 <b>Daniel Solarte Chaverra</b>
-                <span class="about__left--bottom__text--profession">{@profession}</span>
+                <span class="about__left--bottom__text--profession"><%= texts.home.profession %></span>
                 <div class="about__left--bottom__text--location">
                     <div class="about__left--bottom__text--location__flag"></div>
                     <span>Medellín, Colombia</span>
@@ -35,13 +35,13 @@
     </div>
     <div class="about__right">
         <div class="about__right--box about__right--messages">
-            <h1>{@about_me_title}</h1>
-            <p>{@about_message_1}</p>
-            <p>{@about_message_2}</p>
-            <p>{@about_message_3}</p>
+            <h1><%= texts.home.about_me_title %></h1>
+            <% for message in texts.home.messages.iter() { %>
+            <p><%= message %></p>
+            <% } %>
         </div>
         <div class="about__right--box about__right--skills">
-            <h1>{@skills_title}</h1>
+            <h1><%= texts.home.skills_title %></h1>
             <ul class="indigo">
                 <li>HTML</li>
                 <li>CSS</li>
@@ -74,4 +74,4 @@
         </div>
     </div>
 </div>
-{@footer}
+<% include!("header/footer.stpl"); %>
