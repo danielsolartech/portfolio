@@ -1,6 +1,6 @@
 use crate::utils::get_current_directory;
 use serde::Deserialize;
-use std::{collections::HashMap, fs};
+use std::fs;
 
 #[derive(Clone, Debug, Deserialize)]
 pub struct Languages {
@@ -16,13 +16,28 @@ pub struct ProjectDate {
 }
 
 #[derive(Clone, Debug, Deserialize)]
+#[serde(tag = "type")]
+pub enum ProjectLink {
+    #[serde(rename = "single")]
+    Single {
+        name: String,
+        url: String,
+    },
+    #[serde(rename = "multiple")]
+    Multiple {
+        name: Languages,
+        url: String
+    },
+}
+
+#[derive(Clone, Debug, Deserialize)]
 pub struct Project {
     pub images: Vec<String>,
     pub category: usize,
     pub name: Languages,
     pub date: ProjectDate,
     pub description: Languages,
-    pub links: Option<HashMap<String, String>>,
+    pub links: Option<Vec<ProjectLink>>,
 }
 
 #[derive(Clone, Debug, Deserialize)]
@@ -46,7 +61,7 @@ pub fn get_projects() -> Result<Projects, String> {
     match fs::read_to_string(&file_rute) {
         Ok(projects_json) => match serde_json::from_str(&projects_json) {
             Ok(projects) => Ok(projects),
-            Err(_) => Err(format!("Cannot parse file: {}", file_rute)),
+            Err(e) => Err(format!("Cannot parse file: {} - {}", file_rute, e)),
         },
         Err(_) => Err(format!("Cannot read file: {}", file_rute)),
     }
