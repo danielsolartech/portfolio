@@ -29,7 +29,7 @@
     <meta name="twitter:creator" content="@danielsolartech" />
 
     <!-- Styles -->
-    <link rel="stylesheet" href="<%= page_url %>styles/<%= page_id %>" />
+    <style><%- page_styles %></style>
 </head>
 <body>
     <header>

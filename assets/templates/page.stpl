@@ -1,0 +1,11 @@
+<%
+    include!("header/header.stpl");
+
+    match page_id {
+        "home" => include!("pages/home.stpl"),
+        "projects" => include!("pages/projects.stpl"),
+        _ => include!("pages/error404.stpl"),
+    };
+
+    include!("header/footer.stpl");
+%>

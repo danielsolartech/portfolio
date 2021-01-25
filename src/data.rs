@@ -31,6 +31,15 @@ pub struct Projects {
     pub projects: Vec<Project>,
 }
 
+impl Projects {
+    pub fn new() -> Self {
+        Self {
+            categories: Vec::new(),
+            projects: Vec::new(),
+        }
+    }
+}
+
 pub fn get_projects() -> Result<Projects, String> {
     let file_rute: String = format!("{}assets/projects.json", get_current_directory());
 

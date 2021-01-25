@@ -1,0 +1,5 @@
+    <div class="error404">
+        <div class="error404--image"></div>
+        <h1><%= texts.error404.error_title %></h1>
+        <span><%= texts.error404.error_message %></span>
+    </div>
