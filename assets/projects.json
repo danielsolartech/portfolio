@@ -242,7 +242,7 @@
             ]
         },
         {
-            "images": [""],
+            "images": [],
             "category": 2,
             "name": {
                 "en": "SpookedCMS",
@@ -288,7 +288,7 @@
             ]
         },
         {
-            "images": [""],
+            "images": [],
             "category": 4,
             "name": {
                 "en": "NextMusic",

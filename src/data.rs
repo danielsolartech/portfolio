@@ -40,10 +40,48 @@ pub struct Project {
     pub links: Option<Vec<ProjectLink>>,
 }
 
+impl Project {
+    pub fn get_main_image(&self) -> String {
+        if self.images.len() >= 1 {
+            self.images[0].clone()
+        } else {
+            String::new()
+        }
+    }
+
+    pub fn get_name(&self, lang: &String) -> String {
+        if lang == "es" {
+            self.name.es.clone()
+        } else {
+            self.name.en.clone()
+        }
+    }
+
+    pub fn get_description(&self, lang: &String) -> String {
+        if lang == "es" {
+            self.description.es.clone()
+        } else {
+            self.description.en.clone()
+        }
+    }
+}
+
 #[derive(Clone, Debug, Deserialize)]
 pub struct Projects {
     pub categories: Vec<Languages>,
     pub projects: Vec<Project>,
+}
+
+impl Projects {
+    pub fn get_category(&self, category_index: usize, page_lang: &String) -> String {
+        let page_category = &self.categories[category_index];
+
+        if page_lang == "es" {
+            page_category.es.clone()
+        } else {
+            page_category.en.clone()
+        }
+    }
 }
 
 impl Projects {

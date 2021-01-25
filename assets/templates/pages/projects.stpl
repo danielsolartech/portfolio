@@ -1,23 +1,16 @@
     <div class="projects">
         <section class="projects__data">
-            <%
-                for project in projects.projects {
-                    let project_category = &projects.categories[project.category];
-                    let project_category: String = if page_lang == "es" { project_category.es.clone() } else { project_category.en.clone() };
-
-                    let project_name: String = if page_lang == "es" { project.name.es } else { project.name.en };
-                    let project_description: String = if page_lang == "es" { project.description.es } else { project.description.en };
-            %>
+            <% for project in projects.projects.iter() { %>
             <div class="projects__data__project">
-                <div class="projects__data__project__image" style="background-image: url('<%= page_url %>assets/images/projects/<%= project.images[0] %>');">
+                <div class="projects__data__project__image" style="background-image: url('<%= page_url %>assets/images/projects/<%= project.get_main_image() %>');">
                     <div class="projects__data__project__image__date">
                         <% if let Some(day) = project.date.day { %><%= day %> <%= texts.extra.of %> <% } %><%= texts.extra.months[project.date.month - 1] %> <%= texts.extra.of %> <%= project.date.year %>
                     </div>
                 </div>
                 <div class="projects__data__project__info">
-                    <div class="projects__data__project__info__category"><%= project_category %></div>
-                    <div class="projects__data__project__info__name"><%= project_name %></div>
-                    <div class="projects__data__project__info__description"><%- project_description %></div>
+                    <div class="projects__data__project__info__category"><%= projects.get_category(project.category, &page_lang) %></div>
+                    <div class="projects__data__project__info__name"><%= project.get_name(&page_lang) %></div>
+                    <div class="projects__data__project__info__description"><%- project.get_description(&page_lang) %></div>
                     <button class="projects__data__project__info__view"><%= texts.projects.view %></button>
                 </div>
             </div>
