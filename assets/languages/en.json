@@ -4,6 +4,10 @@
             "title": "Portfolio ~ Daniel Solarte Chaverra",
             "description": "Cross-platform software developer, if you want to hire a software developer look my profile clicking here."
         },
+        "projects": {
+            "title": "Projects ~ Daniel Solarte Chaverra",
+            "description": "Take a look at my personal projects and contributions to other projects."
+        },
         "error404": {
             "title": "Page not found",
             "description": "Page not found."
@@ -14,6 +18,10 @@
         "nav_projects": "Projects",
         "nav_blog": "Blog"
     },
+    "extra": {
+        "of": "of",
+        "months": ["January", "Febraury", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+    },
     "home": {
         "profession": "Software Developer",
         "about_me_title": "About Me",
@@ -23,6 +31,9 @@
             "\"The life is an adventure without end.\""
         ],
         "skills_title": "Skills"
+    },
+    "projects": {
+        "view": "View project"
     },
     "error404": {
         "error_title": "Page not found",

@@ -4,10 +4,18 @@
             "title": "Portafolio ~ Daniel Solarte Chaverra",
             "description": "Desarrollador de software multiplataforma, si quieres contratar un desarrollador de software mira mi perfil haciendo click aquí."
         },
+        "projects": {
+            "title": "Proyectos ~ Daniel Solarte Chaverra",
+            "description": "Echa un vistazo a mis proyectos personals y contribuciones a otros proyectos."
+        },
         "error404": {
             "title": "Página no encontrada",
             "description": "Página no encontrada."
         }
+    },
+    "extra": {
+        "of": "de",
+        "months": ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"]
     },
     "header": {
         "nav_home": "Inicio",
@@ -23,6 +31,9 @@
             "\"La vida es una aventura sin fin.\""
         ],
         "skills_title": "Mis habilidades"
+    },
+    "projects": {
+        "view": "Ver proyecto"
     },
     "error404": {
         "error_title": "Página no encontrada",

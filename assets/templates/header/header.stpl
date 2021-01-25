@@ -2,6 +2,7 @@
 <html lang="<%= page_lang %>">
 <head>
     <title><%= page_texts.title %></title>
+    <link rel="icon"  href="<%= page_url %>assets/favicon.ico" />
 
     <meta charset="UTF-8" />
 
@@ -28,7 +29,7 @@
     <meta name="twitter:creator" content="@danielsolartech" />
 
     <!-- Styles -->
-    <link rel="stylesheet" href="<%= page_url %>styles/<%= page_id %>">
+    <link rel="stylesheet" href="<%= page_url %>styles/<%= page_id %>" />
 </head>
 <body>
     <header>

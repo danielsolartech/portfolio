@@ -1,3 +1,4 @@
+mod data;
 mod languages;
 mod templates;
 mod utils;
@@ -34,6 +35,39 @@ async fn home(page_url: web::Data<String>, req: HttpRequest) -> actix_web::Resul
         page_url: page_url.clone(),
         page_keywords: "Daniel Solarte Chaverra, Developer, ReactJS, TypeScript, JavaScript, js, programmer, software, NodeJS, Deno, Rust, Ionic, Figma, danielsolartech, 100DaysOfCode, portfolio, it, technology, service workers, pwa, ts, react",
         page_image: format!("{}assets/images/avatar.png", page_url),
+
+        heart_svg: HEART_SVG,
+    };
+
+    Ok(HttpResponse::Ok()
+        .content_type("text/html")
+        .body(template
+            .render_once()
+            .map_err(|e| InternalError::new(e, StatusCode::INTERNAL_SERVER_ERROR))?))
+}
+
+#[get("/projects")]
+async fn projects(page_url: web::Data<String>, req: HttpRequest) -> actix_web::Result<HttpResponse> {
+    let (page_lang, texts) = utils::get_language_texts(&req);
+    let page_url: String = page_url.into_inner().to_string();
+
+    let page_texts: &languages::PageTexts = texts
+        .pages
+        .get("projects")
+        .expect("Cannot get page texts.");
+
+    let template: templates::Projects = templates::Projects {
+        page_id: "projects",
+
+        page_lang,
+        page_texts: page_texts.clone(),
+        texts,
+
+        page_url,
+        page_keywords: "",
+        page_image: String::new(),
+
+        projects: data::get_projects().expect("Cannot parse projects."),
 
         heart_svg: HEART_SVG,
     };
@@ -100,6 +134,7 @@ async fn main() -> std::io::Result<()> {
             .service(actix_files::Files::new("/assets/", "assets/public/").show_files_listing())
             .service(styles)
             .service(home)
+            .service(projects)
             .service(error404)
     })
     .bind((host, port))?

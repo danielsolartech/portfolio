@@ -16,11 +16,22 @@ pub struct HeaderTexts {
 }
 
 #[derive(Clone, Debug, Deserialize)]
+pub struct ExtraTexts {
+    pub of: String,
+    pub months: Vec<String>,
+}
+
+#[derive(Clone, Debug, Deserialize)]
 pub struct HomeTexts {
     pub profession: String,
     pub about_me_title: String,
     pub messages: Vec<String>,
     pub skills_title: String,
+}
+
+#[derive(Clone, Debug, Deserialize)]
+pub struct ProjectsTexts {
+    pub view: String,
 }
 
 #[derive(Clone, Debug, Deserialize)]
@@ -33,7 +44,9 @@ pub struct Error404Texts {
 pub struct Language {
     pub pages: HashMap<String, PageTexts>,
     pub header: HeaderTexts,
+    pub extra: ExtraTexts,
     pub home: HomeTexts,
+    pub projects: ProjectsTexts,
     pub error404: Error404Texts,
     pub footer: String,
 }

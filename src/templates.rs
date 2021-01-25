@@ -2,6 +2,8 @@ mod error404;
 pub use error404::Error404;
 mod home;
 pub use home::Home;
+mod projects;
+pub use projects::Projects;
 
 use crate::utils::{get_current_directory, get_scss_content};
 use actix_web::{dev::HttpResponseBuilder, http::StatusCode, HttpResponse};

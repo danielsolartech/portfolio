@@ -1,0 +1,112 @@
+@import "utils/colors";
+@import "utils/general";
+@import "header/header";
+@import "header/footer";
+
+.projects {
+    padding: 2rem;
+
+    @media (max-width: 575.98px) {
+        padding: 1rem;
+    }
+
+    &__data {
+        width: 100%;
+
+        &__project {
+            width: calc((100% - 1rem * 3) / 3);
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 0 2px 0 rgba(black, .3);
+
+            @media (min-width: 576px) and (max-width: 991.98px) {
+                width: calc((100% - 2rem) / 2);
+            }
+
+            @media (max-width: 575.98px) {
+                width: 100%;
+            }
+
+            &__image {
+                width: 100%;
+                padding-top: 56.25%;
+                background: {
+                    size: cover;
+                    position: center;
+                    repeat: no-repeat;
+                    color: silver;
+                }
+                position: relative;
+
+                &__date {
+                    position: absolute;
+                    bottom: 0;
+                    right: 0;
+                    background-color: rgba(black, .15);
+                    color: $lightBackground;
+                    padding: .5rem 1rem;
+                    border-radius: 4px 0 4px 0;
+                    font: {
+                        weight: 500;
+                        size: .9em;
+                    };
+                    letter-spacing: .02em;
+                }
+            }
+            &__info {
+                display: flex;
+                flex-flow: column wrap;
+                align-items: center;
+                justify-content: center;
+                background-color: white;
+                padding: 1rem .75rem;
+
+                &__category {
+                    color: $mainColor;
+                    font: {
+                        weight: 600;
+                        size: .8em;
+                    }
+                    letter-spacing: .02em;
+                    text-transform: uppercase;
+                }
+                &__name {
+                    font: {
+                        weight: 500;
+                        size: 1.25rem;
+                    }
+                    letter-spacing: .02em;
+                    text-align: center;
+                    margin-top: .25rem;
+                }
+                &__description {
+                    margin-top: .5rem;
+                    letter-spacing: .02em;
+                    text-align: center;
+
+                    &:empty {
+                        margin-top: 0;
+                    }
+                }
+                &__view {
+                    border: 0;
+                    background-color: $mainColor;
+                    color: white;
+                    font: {
+                        weight: 500;
+                        size: .85rem;
+                    }
+                    padding: .25rem .75rem;
+                    border-radius: 4px;
+                    cursor: pointer;
+                    margin-top: .75rem;
+                    transition: .2s transform ease-in-out;
+
+                    &:hover {
+                        transform: scale3d(.9, .9, .9);
+                    }
+                }
+            }
+        }
+    }
+}

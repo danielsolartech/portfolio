@@ -1,0 +1,324 @@
+{
+    "categories": [
+        {
+            "en": "Meeting",
+            "es": "Charla"
+        },
+        {
+            "en": "Full-stack",
+            "es": "Todo en uno"
+        },
+        {
+            "en": "Backend",
+            "es": "Backend"
+        },
+        {
+            "en": "Frontend",
+            "es": "Interfaz Web"
+        },
+        {
+            "en": "Mobile",
+            "es": "Móvil"
+        },
+        {
+            "en": "Design",
+            "es": "Diseño"
+        }
+    ],
+    "projects": [
+        {
+            "images": ["personal_portfolio_v2_home.png"],
+            "category": 1,
+            "name": {
+                "en": "Personal Portfolio V2",
+                "es": "Portafolio Personal V2"
+            },
+            "date": {
+                "month": 1,
+                "year": 2021
+            },
+            "description": {
+                "en": "Personal portfolio written using Rustlang.",
+                "es": "Portafolio personal escrito usando Rustlang."
+            },
+            "links": {
+                "Demo": "https://www.danielsolarte.com/",
+                "GitHub": "https://github.com/danielsolartech/portfolio"
+            }
+        },
+        {
+            "images": ["rustlang_es_icon.png"],
+            "category": 0,
+            "name": {
+                "en": "Rustlang in Spanish",
+                "es": "Rustlang en Español"
+            },
+            "date": {
+                "month": 12,
+                "year": 2020
+            },
+            "description": {
+                "en": "",
+                "es": ""
+            },
+            "links": {
+                "EN:YouTube Channel": "https://www.youtube.com/channel/UCkFoBOX11Aub4sKHAzu7uOw",
+                "ES:Canal de YouTube": "https://www.youtube.com/channel/UCkFoBOX11Aub4sKHAzu7uOw"
+            }
+        },
+        {
+            "images": ["web_templates_radiolibrecc.png"],
+            "category": 2,
+            "name": {
+                "en": "Web Templates",
+                "es": "Plantillas web"
+            },
+            "date": {
+                "month": 12,
+                "year": 2020
+            },
+            "description": {
+                "en": "",
+                "es": ""
+            },
+            "links": {
+                "GitHub": "https://github.com/danielsolartech/web_templates",
+                "RadioLibre": "https://red.radiolibre.cc/"
+            }
+        },
+        {
+            "images": ["github_presente_meeting.png"],
+            "category": 0,
+            "name": {
+                "en": "GitHub Presente (Spanish)",
+                "es": "GitHub Presente (Español)"
+            },
+            "date": {
+                "day": 17,
+                "month": 11,
+                "year": 2020
+            },
+            "description": {
+                "en": "I talk about \"Why is Rustlang getting a bigger community?\" in Spanish.",
+                "es": "Hablo acerca de \"¿Por qué Rustlang está adquiriendo mayor comunidad?\" en Español."
+            },
+            "links": {
+                "YouTube": "https://youtu.be/l8bLDR89qHA?t=4893"
+            }
+        },
+        {
+            "images": ["amva_app_web_home.png"],
+            "category": 1,
+            "name": {
+                "en": "A.M.V.A. App (API & web)",
+                "es": "Aplicación del A.M.V.A. (API y web)"
+            },
+            "date": {
+                "month": 11,
+                "year": 2020
+            },
+            "description": {
+                "en": "I add the animations of the webpage using react-spring and the view styles.",
+                "es": "Añadí las animaciones de la página web usando react-spring y los estilos de las vistas."
+            },
+            "links": {
+                "Demo": "https://amva40.github.io/",
+                "GitHub": "https://github.com/danielsolartech/amva-app"
+            }
+        },
+        {
+            "images": ["becca_lyria_bot.png"],
+            "category": 2,
+            "name": {
+                "en": "Becca-Lyria (Discord bot)",
+                "es": "Becca-Lyria (Bot para Discord)"
+            },
+            "date": {
+                "month": 10,
+                "year": 2020
+            },
+            "description": {
+                "en": "I make a refactor to the Discord bot of nhcarrigan.",
+                "es": "Realicé una refactorización del código del bot para Discord de nhcarrigan."
+            },
+            "links": {
+                "GitHub (Bot)": "https://github.com/nhcarrigan/Becca-Lyria",
+                "EN:GitHub (Bot documentation)": "https://github.com/nhcarrigan/Becca-Lyria-documentation",
+                "ES:GitHub (Documentación del bot)": "https://github.com/nhcarrigan/Becca-Lyria-documentation"
+            }
+        },
+        {
+            "images": [
+                "personal_portfolio_v1_home.png",
+                "personal_portfolio_v1_projects.png",
+                "personal_portfolio_v1_skills_contact.png"
+            ],
+            "category": 3,
+            "name": {
+                "en": "Personal Portfolio V1",
+                "es": "Portafolio Personal v1"
+            },
+            "date": {
+                "month": 9,
+                "year": 2020
+            },
+            "description": {
+                "en": "Personal portfolio.",
+                "es": "Portafolio personal."
+            },
+            "links": {
+                "GitHub": "https://github.com/danielsolartech/danielsolartech.github.io"
+            }
+        },
+        {
+            "images": ["sflynlang_icon.png"],
+            "category": 2,
+            "name": {
+                "en": "Sflynlang",
+                "es": "Sflynlang"
+            },
+            "date": {
+                "month": 8,
+                "year": 2020
+            },
+            "description": {
+                "en": "High-Level programming language, the primary interpreter is written in Rustlang.",
+                "es": "Lenguaje de programación de alto nivel, el intérprete primario está escrito en Rustlang."
+            },
+            "links": {
+                "GitHub": "https://github.com/sflynlang/sflynlang-interpreter"
+            }
+        },
+        {
+            "images": [""],
+            "category": 2,
+            "name": {
+                "en": "SpookedCMS",
+                "es": "SpookedCMS"
+            },
+            "date": {
+                "month": 8,
+                "year": 2020
+            },
+            "description": {
+                "en": "CMS for NodeJS with themes and plugins.",
+                "es": "CMS para NodeJS con temas y modificaciones personalizadas."
+            },
+            "links": {
+                "GitHub": "https://github.com/danielsolartech/spooked"
+            }
+        },
+        {
+            "images": ["rust_notes_cli.png"],
+            "category": 2,
+            "name": {
+                "en": "Rust Notes CLI",
+                "es": "Aplicación de consola de notas hecha en Rust"
+            },
+            "date": {
+                "month": 8,
+                "year": 2020
+            },
+            "description": {
+                "en": "Manage notes in your computer using the console.",
+                "es": "Administra notas en tu computador usando la consola."
+            },
+            "links": {
+                "GitHub": "https://github.com/danielsolartech/rust-notes-cli"
+            }
+        },
+        {
+            "images": [""],
+            "category": 4,
+            "name": {
+                "en": "NextMusic",
+                "es": "NextMusic"
+            },
+            "date": {
+                "month": 7,
+                "year": 2020
+            },
+            "description": {
+                "en": "Music player for Android built with Ionic.",
+                "es": "Reproductor de música para Android hecho con Ionic."
+            },
+            "links": {
+                "GitHub": "https://github.com/danielsolartech/nextmusic"
+            }
+        },
+        {
+            "images": ["nextmusic_concept.png"],
+            "category": 5,
+            "name": {
+                "en": "NextMusic Concept",
+                "es": "Concepto de NextMusic"
+            },
+            "date": {
+                "month": 7,
+                "year": 2020
+            },
+            "description": {
+                "en": "Design concept for NextMusic.",
+                "es": "Concepto de diseño para NextMusic."
+            }
+        },
+        {
+            "images": ["fazt_community_landing_page.png"],
+            "category": 5,
+            "name": {
+                "en": "Fazt Community Landing Page Design",
+                "es": "Diseño de la página temporal para Fazt Community"
+            },
+            "date": {
+                "month": 7,
+                "year": 2020
+            },
+            "description": {
+                "en": "Temporary landing page for faztcommunity.dev.",
+                "es": "Página temporal para faztcommunity.dev."
+            },
+            "links": {
+                "Tweet": "https://twitter.com/FaztTech/status/1281102226237292544?s=20"
+            }
+        },
+        {
+            "images": ["faztbot.png"],
+            "category": 2,
+            "name": {
+                "en": "Fazt-bot",
+                "es": "Fazt-bot"
+            },
+            "date": {
+                "month": 6,
+                "year": 2020
+            },
+            "description": {
+                "en": "Multipurpose bot for Fazt Tech's Discord server.",
+                "es": "Bot multipropósito para el servidor de Fazt Tech."
+            },
+            "links": {
+                "GitHub": "https://github.com/faztcommunity/fazt-bot"
+            }
+        },
+        {
+            "images": ["nextchat_v1_profile.png"],
+            "category": 1,
+            "name": {
+                "en": "NextChat V1",
+                "es": "NextChat V1"
+            },
+            "date": {
+                "month": 6,
+                "year": 2020
+            },
+            "description": {
+                "en": "Messages social network.<br><br>- You can send and receive messages.<br>- Verify your account using your e-mail.<br>- Send friend requests.",
+                "es": "Red social de mensajería.<br><br>- Puedes enviar y recibir mensajes.<br>- Verifica tu cuenta usando tu correo electrónico.<br>- Envía solicitudes de amistad."
+            },
+            "links": {
+                "GitHub (API)": "https://github.com/danielsolartech/nextchat-api",
+                "GitHub (Web)": "https://github.com/danielsolartech/nextchat-web"
+            }
+        }
+    ]
+}
