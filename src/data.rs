@@ -19,15 +19,9 @@ pub struct ProjectDate {
 #[serde(tag = "type")]
 pub enum ProjectLink {
     #[serde(rename = "single")]
-    Single {
-        name: String,
-        url: String,
-    },
+    Single { name: String, url: String },
     #[serde(rename = "multiple")]
-    Multiple {
-        name: Languages,
-        url: String
-    },
+    Multiple { name: Languages, url: String },
 }
 
 #[derive(Clone, Debug, Deserialize)]

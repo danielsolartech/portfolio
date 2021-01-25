@@ -13,12 +13,18 @@ async fn home(page_url: web::Data<String>, req: HttpRequest) -> actix_web::Resul
 }
 
 #[get("/projects")]
-async fn projects(page_url: web::Data<String>, req: HttpRequest) -> actix_web::Result<HttpResponse> {
+async fn projects(
+    page_url: web::Data<String>,
+    req: HttpRequest,
+) -> actix_web::Result<HttpResponse> {
     templates::render("projects", page_url, req)
 }
 
 #[get("*")]
-async fn error404(page_url: web::Data<String>, req: HttpRequest) -> actix_web::Result<HttpResponse> {
+async fn error404(
+    page_url: web::Data<String>,
+    req: HttpRequest,
+) -> actix_web::Result<HttpResponse> {
     templates::render("error404", page_url, req)
 }
 

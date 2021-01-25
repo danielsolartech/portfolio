@@ -52,11 +52,7 @@ pub struct Language {
 }
 
 pub fn get_language(lang: &String) -> Result<Language, String> {
-    let file_rute: String = format!(
-        "{}assets/languages/{}.json",
-        get_current_directory(),
-        lang
-    );
+    let file_rute: String = format!("{}assets/languages/{}.json", get_current_directory(), lang);
     match fs::read_to_string(&file_rute) {
         Ok(language_json) => match serde_json::from_str(&language_json) {
             Ok(language) => Ok(language),

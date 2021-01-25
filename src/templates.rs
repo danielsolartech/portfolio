@@ -1,9 +1,9 @@
 use crate::{
     data::{get_projects, Projects},
     languages::{Language, PageTexts},
-    utils::{get_current_directory, get_language_texts, get_scss_content}
+    utils::{get_current_directory, get_language_texts, get_scss_content},
 };
-use actix_web::{error::InternalError, http::StatusCode, HttpRequest, HttpResponse, web};
+use actix_web::{error::InternalError, http::StatusCode, web, HttpRequest, HttpResponse};
 use sailfish::TemplateOnce;
 
 #[derive(TemplateOnce)]
@@ -40,7 +40,7 @@ fn get_header_keys<'a>(page_id: &str, page_url: &String) -> (&'a str, String) {
 pub fn render(
     page_id: &str,
     page_url: web::Data<String>,
-    req: HttpRequest
+    req: HttpRequest,
 ) -> actix_web::Result<HttpResponse> {
     let (page_lang, texts) = get_language_texts(&req);
     let page_url: String = page_url.into_inner().to_string();
@@ -65,14 +65,18 @@ pub fn render(
         page_keywords,
         page_image,
 
-        projects: if page_id == "projects" { get_projects().expect("Cannot parse projects data.") } else { Projects::new() },
+        projects: if page_id == "projects" {
+            get_projects().expect("Cannot parse projects data.")
+        } else {
+            Projects::new()
+        },
 
         heart_svg: include_str!("heart.svg"),
     };
 
-    Ok(HttpResponse::Ok()
-        .content_type("text/html")
-        .body(template
+    Ok(HttpResponse::Ok().content_type("text/html").body(
+        template
             .render_once()
-            .map_err(|e| InternalError::new(e, StatusCode::INTERNAL_SERVER_ERROR))?))
+            .map_err(|e| InternalError::new(e, StatusCode::INTERNAL_SERVER_ERROR))?,
+    ))
 }
