@@ -45,7 +45,7 @@ pub fn render(
 ) -> actix_web::Result<HttpResponse> {
     let (page_lang, texts) = get_language_texts(&req);
     let page_url: String = page_url.into_inner().to_string();
-    let (page_keywords, page_image) = get_header_keys(page_id, &page_url);
+    let (page_keywords, mut page_image) = get_header_keys(page_id, &page_url);
 
     let projects: Projects = if page_id == "projects" || page_id == "project" {
         get_projects().expect("Cannot parse projects data.")
@@ -69,9 +69,13 @@ pub fn render(
         project = projects.get_project(&name.to_string(), &page_lang);
 
         match &project {
-            Some(project) => PageTexts {
-                title: project.get_name(&page_lang),
-                description: project.get_description(&page_lang),
+            Some(project) => {
+                page_image = format!("{}assets/images/projects/{}", &page_url, project.get_main_image());
+
+                PageTexts {
+                    title: project.get_name(&page_lang),
+                    description: project.get_description(&page_lang),
+                }
             },
             None => PageTexts {
                 title: texts.projects.project_error.title.clone(),
