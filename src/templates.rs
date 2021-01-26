@@ -1,5 +1,5 @@
 use crate::{
-    data::{get_projects, Projects},
+    data::{get_projects, Projects, Project},
     languages::{Language, PageTexts},
     utils::{get_current_directory, get_language_texts, get_scss_content},
 };
@@ -21,6 +21,7 @@ pub struct Page<'a> {
     pub page_image: String,
 
     pub projects: Projects,
+    pub project: Option<Project>,
 
     pub heart_svg: &'a str,
 }
@@ -46,10 +47,31 @@ pub fn render(
     let page_url: String = page_url.into_inner().to_string();
     let (page_keywords, page_image) = get_header_keys(page_id, &page_url);
 
-    let page_texts: &PageTexts = texts
-        .pages
-        .get(page_id.clone())
-        .expect("Cannot get page texts.");
+    let projects: Projects = if page_id == "projects" || page_id == "project" { get_projects().expect("Cannot parse projects data.") } else { Projects::new() };
+
+    let mut project: Option<Project> = None;
+
+    let page_texts: PageTexts = if page_id != "project" {
+        texts
+            .pages
+            .get(page_id.clone())
+            .expect("Cannot get page texts.")
+            .clone()
+    } else {
+        let name = req.match_info().get("name").expect("Cannot get project name.");
+        project = projects.get_project(&name.to_string(), &page_lang);
+
+        match &project {
+            Some(project) => PageTexts {
+                title: project.get_name(&page_lang),
+                description: project.get_description(&page_lang),
+            },
+            None => PageTexts {
+                title: String::from("Project not found"),
+                description: String::from("Project not found."),
+            },
+        }
+    };
 
     let scss_rute: String = format!("{}assets/scss/{}.scss", get_current_directory(), page_id);
 
@@ -58,18 +80,15 @@ pub fn render(
         page_styles: get_scss_content(&scss_rute).expect("Cannot parse SCSS file."),
 
         page_lang,
-        page_texts: page_texts.clone(),
+        page_texts,
         texts,
 
         page_url,
         page_keywords,
         page_image,
 
-        projects: if page_id == "projects" {
-            get_projects().expect("Cannot parse projects data.")
-        } else {
-            Projects::new()
-        },
+        projects,
+        project,
 
         heart_svg: include_str!("heart.svg"),
     };

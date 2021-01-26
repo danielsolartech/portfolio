@@ -24,6 +24,18 @@ pub enum ProjectLink {
     Multiple { name: Languages, url: String },
 }
 
+impl ProjectLink {
+    pub fn format(&self, page_lang: &String) -> (String, String) {
+        match self {
+            ProjectLink::Single { name, url } => (name.clone(), url.clone()),
+            ProjectLink::Multiple { name, url } => (match page_lang.as_str() {
+                "es" => name.es.clone(),
+                _ => name.en.clone(),
+            }, url.clone()),
+        }
+    }
+}
+
 #[derive(Clone, Debug, Deserialize)]
 pub struct Project {
     pub images: Vec<String>,
@@ -51,6 +63,19 @@ impl Project {
         }
     }
 
+    pub fn get_url(&self, lang: &String) -> String {
+        let name = self.get_name(lang);
+    
+        name
+            .replace("/", "")
+            .replace(".", "")
+            .replace(" ", "-")
+            .replace("ñ", "n")
+            .to_lowercase()
+            .trim()
+            .to_string()
+    }
+
     pub fn get_description(&self, lang: &String) -> String {
         if lang == "es" {
             self.description.es.clone()
@@ -75,6 +100,16 @@ impl Projects {
         } else {
             page_category.en.clone()
         }
+    }
+
+    pub fn get_project(&self, name: &String, lang: &String) -> Option<Project> {
+        for project in self.projects.iter() {
+            if &project.get_url(lang) == name {
+                return Some(project.clone());
+            }
+        }
+
+        None
     }
 }
 

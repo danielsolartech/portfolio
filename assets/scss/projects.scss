@@ -80,12 +80,11 @@
                     margin-top: .25rem;
                 }
                 &__description {
-                    margin-top: .5rem;
                     letter-spacing: .02em;
                     text-align: center;
 
-                    &:empty {
-                        margin-top: 0;
+                    &:not(:empty) {
+                        margin-top: .5rem;
                     }
                 }
                 &__view {
@@ -100,6 +99,7 @@
                     border-radius: 4px;
                     cursor: pointer;
                     margin-top: .75rem;
+                    text-decoration: none;
                     transition: .2s transform ease-in-out;
 
                     &:hover {

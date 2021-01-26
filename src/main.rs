@@ -20,6 +20,14 @@ async fn projects(
     templates::render("projects", page_url, req)
 }
 
+#[get("/project/{name}")]
+async fn project(
+    page_url: web::Data<String>,
+    req: HttpRequest,
+) -> actix_web::Result<HttpResponse> {
+    templates::render("project", page_url, req)
+}
+
 #[get("*")]
 async fn error404(
     page_url: web::Data<String>,
@@ -52,6 +60,7 @@ async fn main() -> std::io::Result<()> {
             .service(actix_files::Files::new("/assets/", "assets/public/").show_files_listing())
             .service(home)
             .service(projects)
+            .service(project)
             .service(error404)
     })
     .bind((host, port))?

@@ -11,7 +11,7 @@
                     <div class="projects__data__project__info__category"><%= projects.get_category(project.category, &page_lang) %></div>
                     <div class="projects__data__project__info__name"><%= project.get_name(&page_lang) %></div>
                     <div class="projects__data__project__info__description"><%- project.get_description(&page_lang) %></div>
-                    <button class="projects__data__project__info__view"><%= texts.projects.view %></button>
+                    <a href="<%= page_url %>project/<%= project.get_url(&page_lang) %>" class="projects__data__project__info__view"><%= texts.projects.view %></a>
                 </div>
             </div>
             <% } %>

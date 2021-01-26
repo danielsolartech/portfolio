@@ -1,0 +1,127 @@
+@import "utils/colors";
+@import "utils/general";
+@import "header/header";
+@import "header/footer";
+
+.project {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 2rem;
+    min-height: calc(100vh - #{$headerSize} - #{$footerSize});
+
+    @media (max-width: 575.98px) {
+        padding: 1rem;
+    }
+
+    &__slider {
+        width: 70%;
+
+        @media (max-width: 991.98px) {
+            width: 100%;
+        }
+
+        &__splide {
+            padding: 0 !important;
+
+            & img {
+                width: 100%;
+                height: auto;
+            }
+        }
+    }
+    &__info {
+        width: 28%;
+
+        @media (max-width: 991.98px) {
+            width: 100%;
+        }
+
+        &__name {
+            font: {
+                weight: 500;
+                size: 1.25rem;
+            }
+            letter-spacing: .02em;
+            margin-top: 1.25rem;
+
+            @media (min-width: 768px) and (max-width: 991.98px) {
+                margin-top: 2rem;
+            }
+
+            @media (max-width: 575.98px) {
+                margin-top: 0;
+            }
+        }
+        &__category, &__date {
+            display: flex;
+            flex-flow: row wrap;
+            align-items: center;
+            justify-content: flex-start;
+            font: {
+                weight: 500;
+                size: .8em;
+            }
+            letter-spacing: .02em;
+            color: #757575;
+
+            & > svg {
+                width: 1em;
+                height: 1em;
+                color: $mainColor;
+                margin-right: .5em;
+            }
+        }
+        &__category {
+            margin-top: .75em;
+        }
+        &__date {
+            margin-top: .25em;
+        }
+        &__description {
+            letter-spacing: .02em;
+
+            &:not(:empty) {
+                margin-top: 1rem;
+            }
+        }
+        &__links {
+            display: flex;
+            flex-flow: row wrap;
+            align-items: center;
+            justify-content: flex-start;
+            margin-top: .75rem;
+
+            & > a {
+                display: flex;
+                flex-flow: row wrap;
+                align-items: center;
+                text-decoration: none;
+                color: white;
+                background-color: $mainColor;
+                padding: .25em .75em;
+                border-radius: 4px;
+                font: {
+                    weight: 500;
+                    size: .8em;
+                }
+                letter-spacing: .02em;
+                transition: .4s background-color ease-in-out;
+                margin-left: .25rem;
+
+                &:nth-child(1) {
+                    margin-left: 0;
+                }
+                & > svg {
+                    width: 1em;
+                    height: 1em;
+                    margin-right: .5em;
+                }
+                &:hover {
+                    background-color: darken($mainColor, 5);
+                }
+            }
+        }
+    }
+}

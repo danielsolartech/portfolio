@@ -4,6 +4,7 @@
     match page_id {
         "home" => include!("pages/home.stpl"),
         "projects" => include!("pages/projects.stpl"),
+        "project" => include!("pages/project.stpl"),
         _ => include!("pages/error404.stpl"),
     };
 
