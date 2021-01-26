@@ -29,7 +29,7 @@
     <meta name="twitter:creator" content="@danielsolartech" />
 
     <!-- Styles -->
-    <style><%- page_styles %></style>
+    <style><%- page_styles.trim().split('\n').map(|line| line.trim()).collect::<Vec<&str>>().join("") %></style>
 </head>
 <body>
     <header>
