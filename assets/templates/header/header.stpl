@@ -74,40 +74,4 @@
         </a>
     </header>
     <script src="<%= page_url %>assets/lottie_svg.min.js"></script>
-    <script>
-        const toggleButton = document.getElementById('toggleNav');
-        const navBox = document.getElementById('nav');
-
-        const toggleButtonIcon = bodymovin.loadAnimation({
-            container: toggleButton,
-            renderer: 'svg',
-            loop: false,
-            autoplay: false,
-            path: '<%= page_url %>assets/icons/menuV2.json',
-        });
-
-        const duration = 1400;
-        const easing = 'ease-in-out';
-
-        let directionMenu = 1;
-        toggleButton.addEventListener('click', () => {
-            if (navBox.classList.contains('active')) {
-                navBox.animate([
-                    { top: '57px' },
-                    { top: '-1000px' },
-                ], { duration, easing });
-
-                setTimeout(() => navBox.classList.remove('active'), duration);
-            } else {
-                navBox.classList.add('active');
-                navBox.animate([
-                    { top: '-1000px' },
-                    { top: '57px' }
-                ], { duration, easing });
-            }
-
-            toggleButtonIcon.setDirection(directionMenu);
-            toggleButtonIcon.play();
-            directionMenu = -directionMenu;
-        });
-    </script>
+    <script src="<%= page_url %>assets/header.js"></script>

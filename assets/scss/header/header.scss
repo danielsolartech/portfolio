@@ -21,6 +21,15 @@ header {
         padding: .5rem 1rem;
     }
 
+    &.fixed {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1000;
+    }
+    &.no-show {
+        display: none;
+    }
     & > .toggle-button {
         display: block;
         margin-right: .75rem;
@@ -52,6 +61,7 @@ header {
             background-color: $headerColor;
             width: 100%;
             position: absolute;
+            z-index: 1000;
             top: $headerSize;
             left: 0;
             padding: 1rem;
