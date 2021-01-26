@@ -30,14 +30,15 @@ pub struct HomeTexts {
 }
 
 #[derive(Clone, Debug, Deserialize)]
-pub struct ProjectsTexts {
-    pub view: String,
+pub struct ProjectError {
+    pub title: String,
+    pub description: String,
 }
 
 #[derive(Clone, Debug, Deserialize)]
-pub struct Error404Texts {
-    pub error_title: String,
-    pub error_message: String,
+pub struct ProjectsTexts {
+    pub view: String,
+    pub project_error: ProjectError,
 }
 
 #[derive(Clone, Debug, Deserialize)]
@@ -47,7 +48,6 @@ pub struct Language {
     pub extra: ExtraTexts,
     pub home: HomeTexts,
     pub projects: ProjectsTexts,
-    pub error404: Error404Texts,
     pub footer: String,
 }
 

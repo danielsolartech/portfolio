@@ -10,7 +10,7 @@
         },
         "error404": {
             "title": "Página no encontrada",
-            "description": "Página no encontrada."
+            "description": "La página que estás intentando ver no está disponible o no existe."
         }
     },
     "extra": {
@@ -33,11 +33,11 @@
         "skills_title": "Mis habilidades"
     },
     "projects": {
-        "view": "Ver proyecto"
-    },
-    "error404": {
-        "error_title": "Página no encontrada",
-        "error_message": "La página a la que estás intentando entrar no está disponible o no existe."
+        "view": "Ver proyecto",
+        "project_error": {
+            "title": "Proyecto no encontrado",
+            "description": "El proyecto que estás intentando ver no está disponible o no existe."
+        }
     },
     "footer": "Hecho con <heart> usando <b>Rust</b>"
 }

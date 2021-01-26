@@ -10,7 +10,7 @@
         },
         "error404": {
             "title": "Page not found",
-            "description": "Page not found."
+            "description": "The page you are trying to view is not available or does not exist."
         }
     },
     "header": {
@@ -33,11 +33,11 @@
         "skills_title": "Skills"
     },
     "projects": {
-        "view": "View project"
-    },
-    "error404": {
-        "error_title": "Page not found",
-        "error_message": "The page you are trying to enter is not available or does not exist."
+        "view": "View project",
+        "project_error": {
+            "title": "Project not found",
+            "description": "The project you are trying to view is not available or does not exist."
+        }
     },
     "footer": "Built with <heart> using <b>Rust</b>"
 }

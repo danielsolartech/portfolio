@@ -15,6 +15,73 @@
         padding: 1rem;
     }
 
+    &--error {
+        flex-flow: column wrap;
+        align-items: center;
+        justify-content: center;
+
+        &__image {
+            $width: 1074px;
+            $height: 584px;
+    
+            width: calc(#{$width} / 2);
+            height: calc(#{$height} / 2);
+            background: {
+                repeat: no-repeat;
+                position: center;
+                size: cover;
+                image: url("/assets/images/undraw_page_not_found.svg");
+            }
+    
+            @media (max-width: 991.98px) {
+                width: calc(#{$width} / 3);
+                height: calc(#{$height} / 3);
+            }
+    
+            @media (min-width: 576px) and (max-width: 767.98px) {
+                width: calc(#{$width} / 4);
+                height: calc(#{$height} / 4);
+            }
+    
+            @media (max-width: 575.98px) {
+                width: calc(#{$width / 5});
+                height: calc(#{$height} / 5);
+            }
+        }
+        & > h1 {
+            color: $mainColor;
+            letter-spacing: .02em;
+            margin: 0;
+            margin-top: 2rem;
+            text-align: center;
+    
+            @media (min-width: 576px) and (max-width: 767.98px) {
+                margin-top: 1rem;
+            }
+    
+            @media (max-width: 575.98px) {
+                font-size: 1rem;
+                margin-top: 1rem;
+            }
+        }
+        & > span {
+            color: #9e9e9e;
+            font-weight: 500;
+            letter-spacing: .02em;
+            margin-top: .75rem;
+            text-align: center;
+    
+            @media (min-width: 576px) and (max-width: 767.98px) {
+                margin-top: .5rem;
+            }
+    
+            @media (max-width: 575.98px) {
+                font-size: .85rem;
+                line-height: 1.5;
+                margin-top: .5rem;
+            }
+        }
+    }
     &__slider {
         width: 70%;
 

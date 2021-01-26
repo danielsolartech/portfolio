@@ -74,8 +74,8 @@ pub fn render(
                 description: project.get_description(&page_lang),
             },
             None => PageTexts {
-                title: String::from("Project not found"),
-                description: String::from("Project not found."),
+                title: texts.projects.project_error.title.clone(),
+                description: texts.projects.project_error.description.clone(),
             },
         }
     };

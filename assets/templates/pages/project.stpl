@@ -63,6 +63,8 @@
     </div>
     <% } else { %>
     <div class="project project--error">
-        Error
+        <div class="project--error__image"></div>
+        <h1><%= texts.projects.project_error.title %></h1>
+        <span><%= texts.projects.project_error.description %></span>
     </div>
     <% } %>
