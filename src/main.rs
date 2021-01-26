@@ -21,10 +21,7 @@ async fn projects(
 }
 
 #[get("/project/{name}")]
-async fn project(
-    page_url: web::Data<String>,
-    req: HttpRequest,
-) -> actix_web::Result<HttpResponse> {
+async fn project(page_url: web::Data<String>, req: HttpRequest) -> actix_web::Result<HttpResponse> {
     templates::render("project", page_url, req)
 }
 

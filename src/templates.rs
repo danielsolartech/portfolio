@@ -1,5 +1,5 @@
 use crate::{
-    data::{get_projects, Projects, Project},
+    data::{get_projects, Project, Projects},
     languages::{Language, PageTexts},
     utils::{get_current_directory, get_language_texts, get_scss_content},
 };
@@ -47,7 +47,11 @@ pub fn render(
     let page_url: String = page_url.into_inner().to_string();
     let (page_keywords, page_image) = get_header_keys(page_id, &page_url);
 
-    let projects: Projects = if page_id == "projects" || page_id == "project" { get_projects().expect("Cannot parse projects data.") } else { Projects::new() };
+    let projects: Projects = if page_id == "projects" || page_id == "project" {
+        get_projects().expect("Cannot parse projects data.")
+    } else {
+        Projects::new()
+    };
 
     let mut project: Option<Project> = None;
 
@@ -58,7 +62,10 @@ pub fn render(
             .expect("Cannot get page texts.")
             .clone()
     } else {
-        let name = req.match_info().get("name").expect("Cannot get project name.");
+        let name = req
+            .match_info()
+            .get("name")
+            .expect("Cannot get project name.");
         project = projects.get_project(&name.to_string(), &page_lang);
 
         match &project {

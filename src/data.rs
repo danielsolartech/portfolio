@@ -28,10 +28,13 @@ impl ProjectLink {
     pub fn format(&self, page_lang: &String) -> (String, String) {
         match self {
             ProjectLink::Single { name, url } => (name.clone(), url.clone()),
-            ProjectLink::Multiple { name, url } => (match page_lang.as_str() {
-                "es" => name.es.clone(),
-                _ => name.en.clone(),
-            }, url.clone()),
+            ProjectLink::Multiple { name, url } => (
+                match page_lang.as_str() {
+                    "es" => name.es.clone(),
+                    _ => name.en.clone(),
+                },
+                url.clone(),
+            ),
         }
     }
 }
@@ -65,9 +68,8 @@ impl Project {
 
     pub fn get_url(&self, lang: &String) -> String {
         let name = self.get_name(lang);
-    
-        name
-            .replace("/", "")
+
+        name.replace("/", "")
             .replace(".", "")
             .replace(" ", "-")
             .replace("ñ", "n")
