@@ -5,6 +5,8 @@
         "home" => include!("pages/home.stpl"),
         "projects" => include!("pages/projects.stpl"),
         "project" => include!("pages/project.stpl"),
+        "blog" => include!("pages/blog.stpl"),
+        "blog_post" => include!("pages/blog_post.stpl"),
         _ => include!("pages/error404.stpl"),
     };
 

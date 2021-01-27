@@ -25,6 +25,16 @@ async fn project(page_url: web::Data<String>, req: HttpRequest) -> actix_web::Re
     templates::render("project", page_url, req)
 }
 
+#[get("/blog")]
+async fn blog(page_url: web::Data<String>, req: HttpRequest) -> actix_web::Result<HttpResponse> {
+    templates::render("blog", page_url, req)
+}
+
+#[get("/blog/{name:.*}")]
+async fn blog_post(page_url: web::Data<String>, req: HttpRequest) -> actix_web::Result<HttpResponse> {
+    templates::render("blog_post", page_url, req)
+}
+
 #[get("*")]
 async fn error404(
     page_url: web::Data<String>,
@@ -58,6 +68,8 @@ async fn main() -> std::io::Result<()> {
             .service(home)
             .service(projects)
             .service(project)
+            .service(blog)
+            .service(blog_post)
             .service(error404)
     })
     .bind((host, port))?

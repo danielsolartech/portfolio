@@ -1,0 +1,89 @@
+@import "utils/colors";
+@import "utils/general";
+@import "header/header";
+@import "header/footer";
+
+.blog {
+    min-height: calc(100vh - #{$headerSize} - #{$footerSize});
+    padding: 1.5rem 2rem;
+
+    & > h1 {
+        margin: 0;
+        margin-bottom: 1rem;
+        padding: 0;
+
+        &:not(:nth-child(1)) {
+            border-top: 1px solid #eee;
+            padding-top: 1.5rem;
+            margin-top: 1.5rem;
+        }
+    }
+    &__posts {
+        display: flex;
+        flex-flow: row wrap;
+        align-items: flex-start;
+        justify-content: space-between;
+
+        &__post {
+            width: calc((100% - 4rem) / 3);
+            text-decoration: none;
+            color: inherit;
+            background-color: white;
+            box-shadow: 0 0 2px 0 rgba(black, .3);
+            border-radius: 4px;
+            overflow: hidden;
+            transition: .2s transform ease-in-out;
+
+            &:hover {
+                transform: scale3d(.95, .95, .95);
+            }
+            &__image {
+                width: 100%;
+                padding-top: 56.25%;
+                background: {
+                    size: cover;
+                    position: center;
+                    repeat: no-repeat;
+                    color: silver;
+                }
+            }
+            &__info {
+                padding: .75rem;
+
+                &__lang, &__time, &__date {
+                    font-size: .7em;
+                    color: #616161;
+                    letter-spacing: .02em;
+                }
+                &__lang, &__time {
+                    display: inline-flex;
+                    flex-flow: row wrap;
+                    align-items: center;
+                    margin-left: .25rem;
+
+                    & > svg {
+                        width: 1em;
+                        height: 1em;
+                        margin-right: .5em;
+                    }
+                }
+                &__date {
+                    float: right;
+                }
+                &__title {
+                    font: {
+                        weight: bold;
+                        size: .9em;
+                    }
+                    letter-spacing: .02em;
+                    margin-top: .75rem;
+                }
+                &__description {
+                    margin-top: .4rem;
+                    line-height: 1.5;
+                    font-size: .85em;
+                }
+            }
+        }
+    }
+}

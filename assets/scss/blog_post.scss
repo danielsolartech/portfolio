@@ -1,0 +1,102 @@
+@import "utils/colors";
+@import "utils/general";
+@import "header/header";
+@import "header/footer";
+
+.blog-post {
+    min-height: calc(100vh - #{$headerSize} - #{$footerSize});
+    padding: 2rem;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: flex-start;
+    justify-content: center;
+
+    &__info {
+        width: calc(90% + 4rem);
+        margin-bottom: 1.5rem;
+        background-color: white;
+        box-shadow: 0 0 2px 0 rgba(black, .3);
+        padding: 1rem 1.5rem;
+        border-radius: 4px;
+
+        & > h1 {
+            margin: 0;
+            padding: 0;
+            letter-spacing: .02em;
+        }
+        & > p {
+            margin: .25rem 0;
+            padding: 0;
+            line-height: 1.5;
+            letter-spacing: .02em;
+        }
+        &__lang, &__time, &__date {
+            display: inline-flex;
+            flex-flow: row wrap;
+            align-items: center;
+            font-size: .8em;
+            margin-top: .25rem;
+            margin-left: .5rem;
+
+            & > svg {
+                width: 1em;
+                height: 1em;
+                margin-right: .5em;
+            }
+        }
+    }
+    &__titles {
+        width: 25%;
+
+        @for $i from 1 through 6 {
+            & > h#{$i} {
+                $paddingLeft: calc((#{$i} - 1) * 1rem);
+                margin: 0;
+                padding: 0;
+                font-size: 1rem;
+                transition: .4s padding-left ease-in-out;
+                cursor: pointer;
+                padding-left: $paddingLeft;
+
+                &:not(:nth-child(1)) {
+                    margin-top: 1rem;
+                }
+                &:hover {
+                    padding-left: calc(#{$paddingLeft} + .25rem);
+                }
+            }
+        }
+    }
+    &__content {
+        width: 65%;
+        margin-left: 1rem;
+        letter-spacing: .02em;
+
+        @for $i from 1 through 6 {
+            & h#{$i} {
+                margin: 0;
+                padding: 0;
+            }
+        }
+        & p {
+            margin: .75rem 0;
+            line-height: 1.5;
+
+            &:nth-child(1) {
+                margin-top: 0;
+            }
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+        & a {
+            text-decoration: none;
+            color: $mainColor;
+            font-weight: 500;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+}

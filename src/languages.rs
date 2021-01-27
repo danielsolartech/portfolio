@@ -17,6 +17,8 @@ pub struct HeaderTexts {
 
 #[derive(Clone, Debug, Deserialize)]
 pub struct ExtraTexts {
+    pub en: String,
+    pub es: String,
     pub of: String,
     pub months: Vec<String>,
 }

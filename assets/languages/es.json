@@ -8,12 +8,18 @@
             "title": "Proyectos ~ Daniel Solarte Chaverra",
             "description": "Echa un vistazo a mis proyectos personals y contribuciones a otros proyectos."
         },
+        "blog": {
+            "title": "Blog ~ Daniel Solarte Chaverra",
+            "description": "Echa un vistazo a los artículos publicados en mi blog."
+        },
         "error404": {
             "title": "Página no encontrada",
             "description": "La página que estás intentando ver no está disponible o no existe."
         }
     },
     "extra": {
+        "en": "Inglés",
+        "es": "Español",
         "of": "de",
         "months": ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"]
     },

@@ -8,6 +8,10 @@
             "title": "Projects ~ Daniel Solarte Chaverra",
             "description": "Take a look at my personal projects and contributions to other projects."
         },
+        "blog": {
+            "title": "Blog ~ Daniel Solarte Chaverra",
+            "description": "Take a look at the articles posted on my blog."
+        },
         "error404": {
             "title": "Page not found",
             "description": "The page you are trying to view is not available or does not exist."
@@ -19,6 +23,8 @@
         "nav_blog": "Blog"
     },
     "extra": {
+        "en": "English",
+        "es": "Spanish",
         "of": "of",
         "months": ["January", "Febraury", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
     },

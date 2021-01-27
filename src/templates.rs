@@ -1,5 +1,5 @@
 use crate::{
-    data::{get_projects, Project, Projects},
+    data::{Blog, BlogPost, Project, Projects},
     languages::{Language, PageTexts},
     utils::{get_current_directory, get_language_texts, get_scss_content},
 };
@@ -22,6 +22,9 @@ pub struct Page<'a> {
 
     pub projects: Projects,
     pub project: Option<Project>,
+
+    pub blog: Blog,
+    pub blog_post: Option<BlogPost>,
 
     pub heart_svg: &'a str,
 }
@@ -47,21 +50,21 @@ pub fn render(
     let page_url: String = page_url.into_inner().to_string();
     let (page_keywords, mut page_image) = get_header_keys(page_id, &page_url);
 
-    let projects: Projects = if page_id == "projects" || page_id == "project" {
-        get_projects().expect("Cannot parse projects data.")
-    } else {
-        Projects::new()
-    };
+    let mut projects: Projects = Projects::new();
+    if page_id == "projects" || page_id == "project" {
+        projects.get().expect("Cannot parse projects.");
+    }
 
     let mut project: Option<Project> = None;
 
-    let page_texts: PageTexts = if page_id != "project" {
-        texts
-            .pages
-            .get(page_id.clone())
-            .expect("Cannot get page texts.")
-            .clone()
-    } else {
+    let mut blog: Blog = Blog::new();
+    if page_id == "blog" || page_id == "blog_post" {
+        blog.get().expect("Cannot parse blog posts.");
+    }
+
+    let mut blog_post: Option<BlogPost> = None;
+
+    let page_texts: PageTexts = if page_id == "project" {
         let name = req
             .match_info()
             .get("name")
@@ -82,6 +85,30 @@ pub fn render(
                 description: texts.projects.project_error.description.clone(),
             },
         }
+    } else if page_id == "blog_post" {
+        let name = req.match_info().get("name").expect("Cannot get blog post name.");
+        blog_post = blog.get_post(&name.to_string());
+
+        match &blog_post {
+            Some(blog_post) => {
+                page_image = blog_post.image.clone();
+
+                PageTexts {
+                    title: blog_post.title.clone(),
+                    description: blog_post.description.clone(),
+                }
+            },
+            None => PageTexts {
+                title: String::from("Blog not found."),
+                description: String::new(),
+            },
+        }
+    } else {
+        texts
+            .pages
+            .get(page_id.clone())
+            .expect("Cannot get page texts.")
+            .clone()
     };
 
     let scss_rute: String = format!("{}assets/scss/{}.scss", get_current_directory(), page_id);
@@ -100,6 +127,9 @@ pub fn render(
 
         projects,
         project,
+
+        blog,
+        blog_post,
 
         heart_svg: include_str!("heart.svg"),
     };
