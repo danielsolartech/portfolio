@@ -20,7 +20,7 @@
             box-shadow: 0 0 2px 0 rgba(black, .3);
 
             @media (min-width: 576px) and (max-width: 991.98px) {
-                width: calc((100% - 2rem) / 2);
+                width: calc((100% - 32px) / 2);
             }
 
             @media (max-width: 575.98px) {
