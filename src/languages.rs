@@ -41,6 +41,7 @@ pub struct ProjectError {
 pub struct ProjectsTexts {
     pub view: String,
     pub project_error: ProjectError,
+    pub project_titles_content: String,
 }
 
 #[derive(Clone, Debug, Deserialize)]

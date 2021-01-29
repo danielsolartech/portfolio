@@ -43,7 +43,8 @@
         "project_error": {
             "title": "Project not found",
             "description": "The project you are trying to view is not available or does not exist."
-        }
+        },
+        "project_titles_content": "Table of contents"
     },
     "footer": "Built with <heart> using <b>Rust</b>"
 }

@@ -37,27 +37,26 @@ const toggleButtonIcon = bodymovin.loadAnimation({
     path: '/assets/icons/menuV2.json',
 });
 
-const duration = 1400;
-const easing = 'ease-in-out';
+const navDuration = 100;
 
-let directionMenu = 1;
+let navDirectionMenu = 1;
 toggleButton.addEventListener('click', () => {
     if (navBox.classList.contains('active')) {
         navBox.animate([
             { top: '57px' },
             { top: '-1000px' },
-        ], { duration, easing });
+        ], { duration: navDuration, easing: 'ease-in-out' });
 
-        setTimeout(() => navBox.classList.remove('active'), duration);
+        setTimeout(() => navBox.classList.remove('active'), navDuration);
     } else {
         navBox.classList.add('active');
         navBox.animate([
             { top: '-1000px' },
             { top: '57px' }
-        ], { duration, easing });
+        ], { duration: navDuration, easing: 'ease-in-out' });
     }
 
-    toggleButtonIcon.setDirection(directionMenu);
+    toggleButtonIcon.setDirection(navDirectionMenu);
     toggleButtonIcon.play();
-    directionMenu = -directionMenu;
+    navDirectionMenu = -navDirectionMenu;
 });

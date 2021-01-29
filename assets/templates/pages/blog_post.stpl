@@ -23,13 +23,20 @@
             </div>
         </div>
         <div class="blog-post__titles">
-            <% for title in blog_post.titles.iter() { %>
-            <h<%= title.size %>><a href="#<%= title.get_url() %>"><%= title.title %></a></h<%= title.size %>>
-            <% } %>
+            <button class="blog-post__titles__toggle">
+                <%= texts.projects.project_titles_content %>
+                <div class="blog-post__titles__toggle__icon" id="toggleContentIcon"></div>
+            </button>
+            <div class="blog-post__titles__content blog-post__titles__content--no-show" id="blogPostContent">
+                <% for title in blog_post.titles.iter() { %>
+                <h<%= title.size %>><a href="#<%= title.get_url() %>"><%= title.title %></a></h<%= title.size %>>
+                <% } %>
+            </div>
         </div>
         <div class="blog-post__content">
             <%- blog_post.content_html %>
         </div>
+        <script src="<%= page_url %>assets/blog_post.js"></script>
         <% } else { %>
             Blog post does not exist.
         <% } %>
