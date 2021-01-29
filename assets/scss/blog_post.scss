@@ -64,6 +64,11 @@
                 &:hover {
                     padding-left: calc(#{$paddingLeft} + .25rem);
                 }
+                & > a {
+                    text-decoration: none;
+                    color: inherit;
+                    width: 100%;
+                }
             }
         }
     }

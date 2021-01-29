@@ -16,6 +16,20 @@ pub fn get_current_directory() -> String {
     }
 }
 
+pub fn to_url(text: &String) -> String {
+    text.trim()
+        .replace("/", "")
+        .replace("(", "")
+        .replace(")", "")
+        .replace("{", "")
+        .replace("¿", "")
+        .replace("?", "")
+        .replace(".", "")
+        .replace(" ", "-")
+        .replace("ñ", "n")
+        .to_lowercase()
+}
+
 pub fn get_language(req: &HttpRequest) -> String {
     if let Some(accept_language) = req.headers().get("Accept-Language") {
         let accept_language: &str = accept_language.to_str().unwrap_or("en");

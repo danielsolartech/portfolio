@@ -1,4 +1,4 @@
-use crate::utils::get_current_directory;
+use crate::utils::{get_current_directory, to_url};
 use regex::Regex;
 use serde::Deserialize;
 use std::{path::Path, fs};
@@ -68,15 +68,7 @@ impl Project {
     }
 
     pub fn get_url(&self, lang: &String) -> String {
-        let name = self.get_name(lang);
-
-        name.replace("/", "")
-            .replace(".", "")
-            .replace(" ", "-")
-            .replace("ñ", "n")
-            .to_lowercase()
-            .trim()
-            .to_string()
+        to_url(&self.get_name(lang))
     }
 
     pub fn get_description(&self, lang: &String) -> String {
@@ -179,6 +171,25 @@ impl BlogPostDate {
 }
 
 #[derive(Clone, Debug)]
+pub struct BlogPostTitle {
+    pub size: usize,
+    pub title: String,
+}
+
+impl BlogPostTitle {
+    pub fn new(size: usize, title: String) -> Self {
+        Self {
+            size,
+            title,
+        }
+    }
+
+    pub fn get_url(&self) -> String {
+        to_url(&self.title)
+    }
+}
+
+#[derive(Clone, Debug)]
 pub struct BlogPost {
     pub url: String,
     pub lang: String,
@@ -187,17 +198,22 @@ pub struct BlogPost {
     pub image: String,
     pub posted_date: BlogPostDate,
 
-    pub titles: Vec<(usize, String)>,
+    pub titles: Vec<BlogPostTitle>,
 
     pub content: String,
     pub content_html: String,
-
-    pub reading_time: i64,
 }
 
 impl BlogPost {
     pub fn get_full_url(&self) -> String {
         format!("{}/{}", self.posted_date.to_string(), self.url)
+    }
+
+    pub fn get_reading_time(&self) -> String {
+        let words: Vec<&str> = self.content.split(" ").collect();
+        let time = words.len() / 200;
+
+        format!("{}min", time)
     }
 }
 
@@ -258,7 +274,7 @@ impl Blog {
             }
         }
 
-        let mut titles: Vec<(usize, String)> = Vec::new();
+        let mut titles: Vec<BlogPostTitle> = Vec::new();
 
         let blog_post_content: String = blog_post_content.replace(&format!("---\n{}\n---", blog_post_table), "");
         let content: String = blog_post_content.trim().to_string();
@@ -268,7 +284,7 @@ impl Blog {
             let size: usize = title_capture["size"].trim().to_string().len();
             let text: String = title_capture["text"].split("\n").collect::<Vec<&str>>()[0].trim().to_string();
 
-            titles.push((size, text));
+            titles.push(BlogPostTitle::new(size, text));
         }
 
         let mut comrak_options = comrak::ComrakOptions::default();
@@ -284,9 +300,8 @@ impl Blog {
             image,
             posted_date,
             titles,
-            content: content.clone(),
+            content,
             content_html,
-            reading_time: (content.len() / 200).to_string().parse::<f32>().unwrap().ceil().to_string().parse().unwrap(),
         });
 
         Ok(())
