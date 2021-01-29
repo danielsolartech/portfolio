@@ -7,6 +7,10 @@
     min-height: calc(100vh - #{$headerSize} - #{$footerSize});
     padding: 1.5rem 2rem;
 
+    @media (max-width: 575.98px) {
+        padding: 1rem;
+    }
+
     & > h1 {
         margin: 0;
         margin-bottom: 1rem;
@@ -33,6 +37,14 @@
             border-radius: 4px;
             overflow: hidden;
             transition: .2s transform ease-in-out;
+
+            @media (max-width: 991.98px) {
+                width: calc((100% - 2rem) / 2);
+            }
+
+            @media (max-width: 767.98px) {
+                width: 100%;
+            }
 
             &:hover {
                 transform: scale3d(.95, .95, .95);
