@@ -8,31 +8,21 @@ const headerDuration = 500;
 window.onscroll = () => {
     const currentScroll = window.scrollY;
 
-    if (currentScroll === 0) {
-        if (header.classList.contains('fixed')) {
-            header.classList.remove('fixed');
+    if (currentScroll > lastScroll) {
+        if (!header.classList.contains('no-show')) {
+            header.animate([
+                { top: `0px` },
+                { top: `-${header.clientHeight}px` },
+            ], { duration: headerDuration, easing: 'ease-in-out' });
+            setTimeout(() => header.classList.add('no-show'), headerDuration);
         }
     } else {
-        if (!header.classList.contains('fixed')) {
-            header.classList.add('fixed');
-        }
-
-        if (currentScroll > lastScroll) {
-            if (!header.classList.contains('no-show')) {
-                header.animate([
-                    { top: `0px` },
-                    { top: `-${header.clientHeight}px` },
-                ], { duration: headerDuration, easing: 'ease-in-out' });
-                setTimeout(() => header.classList.add('no-show'), headerDuration);
-            }
-        } else {
-            if (header.classList.contains('no-show')) {
-                header.classList.remove('no-show');
-                header.animate([
-                    { top: `-${header.clientHeight}px` },
-                    { top: '0px' },
-                ], { duration: headerDuration, easing: 'ease-in-out' });
-            }
+        if (header.classList.contains('no-show')) {
+            header.classList.remove('no-show');
+            header.animate([
+                { top: `-${header.clientHeight}px` },
+                { top: '0px' },
+            ], { duration: headerDuration, easing: 'ease-in-out' });
         }
     }
 
