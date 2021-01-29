@@ -14,7 +14,7 @@
         width: 100%;
 
         &__project {
-            width: calc((100% - 1rem * 3) / 3);
+            width: calc((100% - 48px) / 3);
             border-radius: 4px;
             overflow: hidden;
             box-shadow: 0 0 2px 0 rgba(black, .3);
