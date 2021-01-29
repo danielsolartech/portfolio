@@ -263,7 +263,7 @@ impl Blog {
         let blog_post_content: String = blog_post_content.replace(&format!("---\n{}\n---", blog_post_table), "");
         let content: String = blog_post_content.trim().to_string();
 
-        let title_expression = Regex::new(r"(?P<size>#{1,6})\s+(?P<text>[\w\s?¿¡!]+\n)").unwrap();
+        let title_expression = Regex::new(r"(?P<size>#{1,6})\s+(?P<text>[\w\s?¿¡!\(\)]+\n)").unwrap();
         for title_capture in title_expression.captures_iter(&content)  {
             let size: usize = title_capture["size"].trim().to_string().len();
             let text: String = title_capture["text"].split("\n").collect::<Vec<&str>>()[0].trim().to_string();
