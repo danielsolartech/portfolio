@@ -23,11 +23,8 @@ No podemos dejar atrás a Microsoft, puesto que este usa Rustlang en [Microsoft 
 # ¿Qué se puede hacer en Rustlang?
 Con Rustlang podemos hacer infinidad de cosas desde un sistema operativo o una simple aplicación de consola; también aplicaciones de escritorio, videojuegos, páginas web o incluso utilizarlo en conjunto a JavaScript usando [WebAssembly](https://webassembly.org/).
 
-# Ejemplos de código
-
-## Hola mundo
-```rust
-fn main() {
-    println!("¡Hola mundo!");
-}
-```
+# Recursos
+- [Repositorio Oficial](https://github.com/rust-lang)
+- [Algoritmos hechos con Rustlang](https://github.com/TheAlgorithms/Rust)
+- [Tensorflow para Rustlang](https://github.com/tensorflow/rust)
+- [Repositorios interesantes escritos en Rustlang](https://github.com/rust-unofficial/awesome-rust)
