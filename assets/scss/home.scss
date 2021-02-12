@@ -9,7 +9,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 1rem 2rem;
-    height: calc(100vh - #{$headerSize} - #{$footerSize});
+    min-height: calc(100vh - #{$headerSize} - #{$footerSize});
 
     @media (max-width: 1199.98px) {
         height: auto;

@@ -5,7 +5,7 @@
 
 .error404 {
     width: 100%;
-    height: calc(100vh - #{$headerSize} - #{$footerSize});
+    min-height: calc(100vh - #{$headerSize} - #{$footerSize});
     display: flex;
     flex-flow: column wrap;
     align-items: center;

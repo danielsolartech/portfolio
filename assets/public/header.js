@@ -1,33 +1,5 @@
-const header = document.getElementsByTagName('header')[0];
 const toggleButton = document.getElementById('toggleNav');
 const navBox = document.getElementById('nav');
-
-let lastScroll = window.scrollY;
-const headerDuration = 500;
-
-window.onscroll = () => {
-    const currentScroll = window.scrollY;
-
-    if (currentScroll > lastScroll) {
-        if (!header.classList.contains('no-show')) {
-            header.animate([
-                { top: `0px` },
-                { top: `-${header.clientHeight}px` },
-            ], { duration: headerDuration, easing: 'ease-in-out' });
-            setTimeout(() => header.classList.add('no-show'), headerDuration);
-        }
-    } else {
-        if (header.classList.contains('no-show')) {
-            header.classList.remove('no-show');
-            header.animate([
-                { top: `-${header.clientHeight}px` },
-                { top: '0px' },
-            ], { duration: headerDuration, easing: 'ease-in-out' });
-        }
-    }
-
-    lastScroll = currentScroll;
-};
 
 const toggleButtonIcon = bodymovin.loadAnimation({
     container: toggleButton,
@@ -37,7 +9,7 @@ const toggleButtonIcon = bodymovin.loadAnimation({
     path: '/assets/icons/menuV2.json',
 });
 
-const navDuration = 100;
+const navDuration = 800;
 
 let navDirectionMenu = 1;
 toggleButton.addEventListener('click', () => {
