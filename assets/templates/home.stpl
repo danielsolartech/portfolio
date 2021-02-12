@@ -70,6 +70,7 @@
                 <ul class="green">
                     <li>MongoDB</li>
                     <li>MySQL</li>
+                    <li>PostgreSQL</li>
                 </ul>
                 <ul class="deep-purple">
                     <li>Heroku</li>
