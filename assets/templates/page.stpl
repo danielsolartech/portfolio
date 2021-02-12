@@ -1,14 +1,14 @@
 <%
-    include!("header/header.stpl");
+    include!("header.stpl");
 
     match page_id {
-        "home" => include!("pages/home.stpl"),
-        "projects" => include!("pages/projects.stpl"),
-        "project" => include!("pages/project.stpl"),
-        "blog" => include!("pages/blog.stpl"),
-        "blog_post" => include!("pages/blog_post.stpl"),
-        _ => include!("pages/error404.stpl"),
-    };
+        "home" => include!("home.stpl"),
+        "projects" => include!("projects.stpl"),
+        "project" => include!("project.stpl"),
+        "blog" => include!("blog.stpl"),
+        "blog_post" => include!("blog_post.stpl"),
+        _ => include!("error404.stpl"),
+    }
 
-    include!("header/footer.stpl");
+    include!("footer.stpl");
 %>
