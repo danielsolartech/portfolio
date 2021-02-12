@@ -276,7 +276,7 @@ impl Blog {
 
         let mut titles: Vec<BlogPostTitle> = Vec::new();
 
-        let blog_post_content: String = blog_post_content.replace(&format!("---\n{}\n---", blog_post_table), "");
+        let blog_post_content: String = blog_post_content.replace(&table_captures["text"], "");
         let content: String = blog_post_content.trim().to_string();
 
         let title_expression = Regex::new(r"(?P<size>#{1,6})\s+(?P<text>[\w\s?¿¡!\(\)]+\n)").unwrap();
